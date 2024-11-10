@@ -21,17 +21,22 @@ class TextNode:
         self.text = text
         self.url = url
 
-    def __eq__(self, textNode):
-        for prop in textNode:
-            if textNode[prop] != self[prop]:
-                return False
-        return True
+    def __eq__(self, textNode_2):
+        if self.text != textNode_2.text:
+            return False
+        elif self.text_type != textNode_2.text_type:
+            return False
+        elif self.url != textNode_2.url:
+            return False
+        else:
+            return True
 
     def __repr__(self):
-        if self.text_type == 'bold':
-            return f"Textnode({self.text.upper()}, {self.text_type.upper()}, {self.url.upper()}"
-        elif self.text_type == TextType.ITALIC:
-            return f"Textnode({self.text.lower()}, {self.text_type.lower()}, {self.url.upper()}"
+        # print(f"TextNode: {self.text} {self.text_type} {self.url}")
+        if self.text_type == TextType.BOLD.value:
+            return f"Textnode({self.text.upper()}, {self.text_type.upper()}, {self.url.upper()})"
+        elif self.text_type == TextType.ITALIC.value:
+            return f"Textnode({self.text.lower()}, {self.text_type.lower()}, {self.url.lower()})"
         else:
             raise Exception("invalid text type")
 
